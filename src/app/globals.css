@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-british-racing-green: #00331F;
+  --color-british-racing-green-light: #1A4D2E;
+  --color-british-racing-green-lighter: #2D6A4F;
+  --color-forest-accent: #52B788;
+  --color-cream: #F8F9FA;
+  --color-charcoal: #1A1A1A;
+  --color-muted-text: #6B7280;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1A1A1A;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,10 +1,7 @@
-import type { Locale } from "@/lib/i18n";
-
 interface SectionProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
-  locale?: Locale;
 }
 
 export default function Section({ children, className = "", id }: SectionProps) {

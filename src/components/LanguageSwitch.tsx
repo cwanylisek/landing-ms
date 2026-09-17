@@ -1,20 +1,25 @@
 import Link from "next/link";
-import type { Locale } from "@/lib/i18n";
+import { SUPPORTED_LOCALES, type Locale } from "@/lib/i18n";
 
 export default function LanguageSwitch({ locale }: { locale: Locale }) {
-  const otherLocale = locale === "pl" ? "en" : "pl";
   return (
-    <div className="flex items-center justify-center gap-2">
-      <Link
-        href={`/${otherLocale}`}
-        className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
-          locale === otherLocale
-            ? "bg-british-racing-green text-white"
-            : "text-british-racing-green/60 hover:text-british-racing-green"
-        }`}
-      >
-        {otherLocale === "pl" ? "🇵🇱 Polski" : "🇬🇧 English"}
-      </Link>
+    <div className="flex items-center gap-1 text-sm font-bold tracking-widest">
+      {SUPPORTED_LOCALES.map((code) =>
+        code === locale ? (
+          <span key={code} aria-current="true" className="px-1.5 text-british-racing-green">
+            {code.toUpperCase()}
+          </span>
+        ) : (
+          <Link
+            key={code}
+            href={`/${code}`}
+            aria-label={code === "pl" ? "Polski" : "English"}
+            className="pressable rounded-md px-1.5 text-charcoal/40 transition-colors duration-300 hover:text-british-racing-green"
+          >
+            {code.toUpperCase()}
+          </Link>
+        )
+      )}
     </div>
   );
 }

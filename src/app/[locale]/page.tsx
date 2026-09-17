@@ -59,7 +59,7 @@ export default async function LocalePage({
     <>
       <Hero t={t} locale={locale} />
       <About t={t} />
-      <Specializations t={t} locale={locale} />
+      <Specializations t={t} />
       <Pricing t={t} locale={locale} />
       <Faq t={t} />
       <Contact t={t} locale={locale} />

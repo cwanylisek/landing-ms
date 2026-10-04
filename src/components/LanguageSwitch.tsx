@@ -6,7 +6,7 @@ export default function LanguageSwitch({ locale }: { locale: Locale }) {
     <div className="flex items-center gap-1 text-sm font-bold tracking-widest">
       {SUPPORTED_LOCALES.map((code) =>
         code === locale ? (
-          <span key={code} aria-current="true" className="px-1.5 text-british-racing-green">
+          <span key={code} aria-current="true" className="inline-flex min-h-10 min-w-9 items-center justify-center px-1.5 text-british-racing-green">
             {code.toUpperCase()}
           </span>
         ) : (
@@ -14,7 +14,7 @@ export default function LanguageSwitch({ locale }: { locale: Locale }) {
             key={code}
             href={`/${code}`}
             aria-label={code === "pl" ? "Polski" : "English"}
-            className="pressable rounded-md px-1.5 text-charcoal/40 transition-colors duration-300 hover:text-british-racing-green"
+            className="pressable inline-flex min-h-10 min-w-9 items-center justify-center rounded-md px-1.5 text-charcoal/75 transition-colors duration-300 hover:text-british-racing-green"
           >
             {code.toUpperCase()}
           </Link>

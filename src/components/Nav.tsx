@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LanguageSwitch from "./LanguageSwitch";
+import MobileNav from "./MobileNav";
 import type { Locale } from "@/lib/i18n";
 
 export default function Nav({
@@ -27,20 +28,17 @@ export default function Nav({
   ];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 md:px-6">
-      <div className="glass-nav mx-auto flex max-w-5xl items-center justify-between gap-3 rounded-2xl px-4 py-2.5 md:px-5">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-10">
+      <div className="glass-nav mx-auto flex max-w-[1184px] items-center justify-between gap-3 rounded-[22px] px-4 py-3 md:px-6">
         <Link
           href={`/${locale}`}
-          className="pressable flex items-center gap-2 font-extrabold tracking-tight text-british-racing-green transition-opacity duration-300 hover:opacity-75"
+          className="pressable flex items-center gap-2.5 rounded-lg text-lg font-extrabold tracking-tight text-british-racing-green transition-opacity duration-300 hover:opacity-75"
         >
-          <span
-            aria-hidden="true"
-            className="h-2.5 w-2.5 rounded-full bg-gradient-to-br from-forest-accent to-british-racing-green"
-          />
+          <svg aria-hidden="true" viewBox="0 0 28 28" className="nav-mark" fill="none"><rect width="28" height="28" rx="9" fill="#00331F" /><path d="M7 20V8l7 8 7-8v12" stroke="#95D5B2" strokeWidth="1.8" strokeLinejoin="round" /></svg>
           Maria
         </Link>
 
-        <nav aria-label={nav.home} className="hidden items-center gap-1 md:flex">
+        <nav aria-label={locale === "pl" ? "Nawigacja główna" : "Main navigation"} className="hidden items-center gap-1 lg:flex">
           {links.map((link) => (
             <a
               key={link.href}
@@ -52,7 +50,10 @@ export default function Nav({
           ))}
         </nav>
 
-        <LanguageSwitch locale={locale} />
+        <div className="flex items-center gap-2">
+          <LanguageSwitch locale={locale} />
+          <MobileNav links={links} locale={locale} />
+        </div>
       </div>
     </header>
   );
